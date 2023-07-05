@@ -1,0 +1,94 @@
+@mixin buttonBase {
+    @apply cursor-pointer;
+    @apply inline-flex;
+    @apply items-center;
+    // @apply justify-center;
+    @apply font-normal;
+    @apply text-center;
+    @apply whitespace-nowrap;
+    @apply text-base;
+    @apply rounded;
+    @apply py-2 px-8;
+    user-select: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+
+    // disabled
+    &:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+        pointer-events: none;
+        background: #6b7280 !important;
+    }
+}
+
+@mixin button($bg, $color, $hover_bg, $hover_color) {
+    &:not(.outlined) {
+        @apply text-#{$color};
+        @apply bg-#{$bg};
+        @apply hover:bg-#{$hover_bg};
+        @apply hover:text-#{$hover_color};
+    }
+
+    &.outlined {
+        @apply outline;
+        @apply outline-offset-[-2px];
+        @apply outline-1;
+        @apply outline-#{$bg};
+        @apply text-#{$bg};
+        @apply hover:bg-#{$bg};
+        @apply hover:text-#{$color};
+    }
+
+    &.ghost {
+        @apply text-#{$bg};
+        @apply hover:text-#{$color};
+        @apply text-#{$bg};
+        @apply bg-transparent;
+        @apply hover:bg-#{'transparent'};
+        @apply hover:text-#{$hover_bg};
+        @apply py-1 px-0;
+    }
+}
+
+.button {
+    @include buttonBase;
+
+    &.white {
+        @include button("white", "black", "white", "black");
+    }
+
+    &.primary {
+        @include button("green", "white", "green-700", "white");
+    }
+
+    &.danger {
+        @include button("red", "white", "red-700", "white");
+    }
+
+    &.info {
+        @include button("gray-700", "white", "gray-900", "white");
+    }
+
+    &.is-loading {
+        >span:not(.loader) {
+            display: none;
+        }
+
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    .loader {
+        svg {
+            margin: 0 auto;
+        }
+    }
+}
+
+.centered-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}

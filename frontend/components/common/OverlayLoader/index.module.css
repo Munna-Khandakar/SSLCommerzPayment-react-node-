@@ -1,0 +1,10 @@
+.loaderWrapper {
+  position: fixed;
+  z-index: 20;
+  background: #00000033;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
