@@ -1,8 +1,0 @@
-{
-  "_app.tsx -> @components/common/OverlayLoader": {
-    "id": "_app.tsx -> @components/common/OverlayLoader",
-    "files": [
-      "static/chunks/components_common_OverlayLoader_index_tsx.js"
-    ]
-  }
-}
